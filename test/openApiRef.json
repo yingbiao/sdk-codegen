@@ -34366,7 +34366,10 @@
             "description": "Name of theme. Can only be alphanumeric and underscores.",
             "nullable": false
           },
-          "settings": { "$ref": "#/components/schemas/ThemeSettings" }
+          "settings": {
+            "$ref": "#/components/schemas/ThemeSettings",
+            "nullable": false
+          }
         },
         "x-looker-status": "beta"
       },
