@@ -166,6 +166,49 @@ const swaggerFrag = `
         "x-looker-activity-type": "non_query"
       }
     }
+  },
+  "definitions": {
+    "Theme": {
+      "properties": {
+        "can": {
+          "type": "object",
+          "additionalProperties": { "type": "boolean" },
+          "readOnly": true,
+          "description": "Operations the current user is able to perform on this object",
+          "x-looker-nullable": false
+        },
+        "begin_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp for when this theme becomes active. Null=always",
+          "x-looker-nullable": true
+        },
+        "end_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp for when this theme expires. Null=never",
+          "x-looker-nullable": true
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "readOnly": true,
+          "description": "Unique Id",
+          "x-looker-nullable": false
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of theme. Can only be alphanumeric and underscores.",
+          "x-looker-nullable": false
+        },
+        "settings": {
+          "$ref": "#/definitions/ThemeSettings",
+          "description": "Hash of name/value pairs for theme settings. These names get validated.",
+          "x-looker-nullable": false
+        }
+      },
+      "x-looker-status": "stable"
+    }
   }
 }
 `
@@ -335,6 +378,47 @@ const openApiFrag = `
         "x-looker-activity-type": "non_query"
       }
     }
+  },
+  "components": {
+    "schemas": {
+      "Theme": {
+        "properties": {
+          "can": {
+            "type": "object",
+            "additionalProperties": { "type": "boolean" },
+            "readOnly": true,
+            "description": "Operations the current user is able to perform on this object",
+            "nullable": false
+          },
+          "begin_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp for when this theme becomes active. Null=always",
+            "nullable": true
+          },
+          "end_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp for when this theme expires. Null=never",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true,
+            "description": "Unique Id",
+            "nullable": false
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of theme. Can only be alphanumeric and underscores.",
+            "nullable": false
+          },
+          "settings": { "$ref": "#/components/schemas/ThemeSettings" }
+        },
+        "x-looker-status": "stable"
+      }
+    }
   }
 }
 `
@@ -430,6 +514,9 @@ describe('spec conversion', () => {
     const actual = fixConversion(openApiFrag, swaggerFrag)
     expect(actual.spec).toContain(`"style":"simple"`)
     expect(actual.fixes).not.toHaveLength(0)
+    expect(actual.fixes).toContain(
+      "Type Theme::settings preserving 'nullable: false'"
+    )
   })
 
   describe('spec retrieval', () => {

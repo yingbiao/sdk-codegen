@@ -28,6 +28,7 @@ import * as OAS from 'openapi3-ts'
 import md5 from 'blueimp-md5'
 import {
   HttpMethod,
+  isTrue,
   ResponseMode,
   responseMode,
   StatusCode,
@@ -675,7 +676,7 @@ export class Property extends SchemadSymbol implements IProperty {
       required.includes(name) || schema.required?.includes(name)
     )
     this.nullable =
-      this.schema.nullable || this.schema['x-looker-nullable'] || false
+      this.schema.nullable || isTrue(this.schema['x-looker-nullable']) || false
     this.readOnly = this.schema.readOnly || false
     this.writeOnly = this.schema.writeOnly || false
   }

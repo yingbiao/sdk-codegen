@@ -246,7 +246,38 @@ export const fixConversionObjects = (api: any, swagger: any) => {
     })
   })
 
-  return { fixes, spec: JSON.stringify(api) }
+  if (swagger.definitions) {
+    // Preserve "nullable" and "required" flags from swagger spec lost for property `$ref` types
+    Object.entries(swagger.definitions).forEach(([typeName, type]) => {
+      Object.entries((type as any).properties).forEach(([propName, p]) => {
+        const prop = p as any
+        if (
+          prop.$ref &&
+          ('nullable' in prop || 'x-looker-nullable' || 'required' in prop)
+        ) {
+          const def = api.components.schemas?.[typeName]?.properties
+          if (def) {
+            if ('nullable' in prop || 'x-looker-nullable' in prop) {
+              const nullable =
+                'nullable' in prop ? prop.nullable : prop['x-looker-nullable']
+              const fix = `Type ${typeName}::${propName} preserving 'nullable: ${nullable}'`
+              def[propName].nullable = nullable
+              fixes.push(fix)
+            }
+            if ('required' in prop && prop.required) {
+              const fix = `Type ${typeName}::${propName} preserving 'required: ${prop.required}'`
+              def[propName].required = prop.required
+              fixes.push(fix)
+            }
+          } else {
+            warn(`Could not find OpenApi component schema for type ${typeName}`)
+          }
+        }
+      })
+    })
+  }
+
+  return { fixes, spec: api }
 }
 
 /**
@@ -269,13 +300,17 @@ export const isOpenApi = (spec: any) => spec.openapi !== undefined
  *
  * @param openApiSpec converted OpenAPI spec
  * @param swaggerSpec original swagger spec that may contain missed conversions
- * @returns modified openApiSpec and fix log in IConversionResults
+ * @returns modified openApiSpec as a JSON string, and fix log in IConversionResults
  */
 export const fixConversion = (
   openApiSpec: string,
   swaggerSpec: string
 ): IConversionResults => {
-  return fixConversionObjects(JSON.parse(openApiSpec), JSON.parse(swaggerSpec))
+  const result = fixConversionObjects(
+    JSON.parse(openApiSpec),
+    JSON.parse(swaggerSpec)
+  )
+  return { fixes: result.fixes, spec: JSON.stringify(result.spec) }
 }
 
 /**
@@ -492,8 +527,8 @@ export const upgradeSpecObject = (spec: any) => {
       schemas: schemas,
     },
   }
-  // const result = fixConversionObjects(api, spec)
-  return api
+  const result = fixConversionObjects(api, spec)
+  return result.spec
 }
 
 /**

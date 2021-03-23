@@ -376,6 +376,29 @@ describe('sdkModels', () => {
       expect(type?.properties.result_format.required).toEqual(true)
       expect(type?.properties.source.required).toEqual(false)
     })
+
+    it('Theme', () => {
+      const type = apiTestModel.types.Theme
+      expect(type).toBeDefined()
+      /* eslint-disable jest-dom/prefer-required */
+      expect(type.properties.id.required).toEqual(true)
+      expect(type.properties.name.required).toEqual(true)
+      expect(type.properties.settings.required).toEqual(true)
+      expect(type.properties.can.required).toEqual(false)
+      expect(type.properties.begin_at.required).toEqual(false)
+      expect(type.properties.end_at.required).toEqual(false)
+      /* eslint-enable jest-dom/prefer-required */
+      expect(Object.keys(type.requiredProperties)).toEqual([
+        'id',
+        'name',
+        'settings',
+      ])
+      expect(Object.keys(type.optionalProperties)).toEqual([
+        'can',
+        'begin_at',
+        'end_at',
+      ])
+    })
   })
 
   describe('writeable logic', () => {
