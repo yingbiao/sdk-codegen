@@ -431,9 +431,10 @@ describe('spec conversion', () => {
     Object.entries(api.types).forEach(([_, type]) => {
       const badArgs = Object.entries(type.properties)
         .filter(
-          ([_, p]) => p.name.toLowerCase().endsWith('id') // &&
-          // p.type.intrinsic &&
-          // numerics.includes(p.type.name)
+          ([_, p]) =>
+            p.name.toLowerCase().endsWith('id') &&
+            p.type.intrinsic &&
+            numerics.includes(p.type.name)
         )
         .map(([_, p]) => p.fullName)
       badArgs.forEach((p) => stale.typeProps.push(p))
