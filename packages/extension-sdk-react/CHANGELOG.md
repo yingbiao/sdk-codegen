@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### [22.4.2](https://www.github.com/looker-open-source/sdk-codegen/compare/extension-sdk-react-v22.4.2...extension-sdk-react-v22.4.2) (2022-04-25)
+
+
+### Features
+
+* Add ExtensionProvider40 component ([#1068](https://www.github.com/looker-open-source/sdk-codegen/issues/1068)) ([425aee5](https://www.github.com/looker-open-source/sdk-codegen/commit/425aee5097361b580b3ff7e93f227d6d34f21eb3))
+
+
+### Bug Fixes
+
+* add children property to ExtensionProvider type ([#1070](https://www.github.com/looker-open-source/sdk-codegen/issues/1070)) ([9524583](https://www.github.com/looker-open-source/sdk-codegen/commit/9524583fd99f0b46bba443a1dfa59cc6f42d081c))
+
 ### [22.4.2](https://www.github.com/looker-open-source/sdk-codegen/compare/extension-sdk-react-v22.4.1...extension-sdk-react-v22.4.2) (2022-04-07)
 
 

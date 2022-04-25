@@ -1,5 +1,23 @@
 # Changelog
 
+## [2.4.0](https://www.github.com/looker-open-source/sdk-codegen/compare/sdk-codegen-all-v2.3.2...sdk-codegen-all-v2.4.0) (2022-04-25)
+
+
+### Features
+
+* Add ExtensionProvider40 component ([#1068](https://www.github.com/looker-open-source/sdk-codegen/issues/1068)) ([425aee5](https://www.github.com/looker-open-source/sdk-codegen/commit/425aee5097361b580b3ff7e93f227d6d34f21eb3))
+
+
+### Bug Fixes
+
+* add children property to ExtensionProvider type ([#1070](https://www.github.com/looker-open-source/sdk-codegen/issues/1070)) ([9524583](https://www.github.com/looker-open-source/sdk-codegen/commit/9524583fd99f0b46bba443a1dfa59cc6f42d081c))
+* example miner github permalinks do not use `.git` in the repository name ([#1063](https://www.github.com/looker-open-source/sdk-codegen/issues/1063)) ([e150b33](https://www.github.com/looker-open-source/sdk-codegen/commit/e150b33ff974575d731f48f2f1488bdbeeb9118c))
+* package refs for API Explorer extension ([#1055](https://www.github.com/looker-open-source/sdk-codegen/issues/1055)) ([5fcf358](https://www.github.com/looker-open-source/sdk-codegen/commit/5fcf3588e1f4e87fc6d1d5789e00f66cf4fe92d9))
+* Refactored Go SDK to use Go oauth2 client, added `x-looker-appid` header to Go requests ([#1069](https://www.github.com/looker-open-source/sdk-codegen/issues/1069)) ([d51a675](https://www.github.com/looker-open-source/sdk-codegen/commit/d51a6750f7d5f22efa84278492a71336e39d92e1))
+* Register Go Fuzzy JSON Decoders once on init ([#1054](https://www.github.com/looker-open-source/sdk-codegen/issues/1054)) ([350d32d](https://www.github.com/looker-open-source/sdk-codegen/commit/350d32dfecb42679cff06e0c4508bebcf7fa6809))
+* replacing unimported exception ([#1066](https://www.github.com/looker-open-source/sdk-codegen/issues/1066)) ([d85b1b8](https://www.github.com/looker-open-source/sdk-codegen/commit/d85b1b889c9d27e337a5e8d38fc3f32e013cc4d8))
+* Update prod entrypoint to match dev entrypoint (pull [#1059](https://www.github.com/looker-open-source/sdk-codegen/issues/1059)) ([0e4c3f4](https://www.github.com/looker-open-source/sdk-codegen/commit/0e4c3f47782d23f6c8e5509bd2942b0934e44ea2))
+
 ### [2.3.2](https://www.github.com/looker-open-source/sdk-codegen/compare/sdk-codegen-all-v2.3.1...sdk-codegen-all-v2.3.2) (2022-04-07)
 
 

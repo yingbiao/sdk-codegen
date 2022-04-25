@@ -1,5 +1,12 @@
 # Changelog
 
+### [21.3.4](https://www.github.com/looker-open-source/sdk-codegen/compare/sdk-codegen-scripts-v21.3.3...sdk-codegen-scripts-v21.3.4) (2022-04-25)
+
+
+### Bug Fixes
+
+* example miner github permalinks do not use `.git` in the repository name ([#1063](https://www.github.com/looker-open-source/sdk-codegen/issues/1063)) ([e150b33](https://www.github.com/looker-open-source/sdk-codegen/commit/e150b33ff974575d731f48f2f1488bdbeeb9118c))
+
 ### [21.3.3](https://www.github.com/looker-open-source/sdk-codegen/compare/sdk-codegen-scripts-v21.3.2...sdk-codegen-scripts-v21.3.3) (2022-04-07)
 
 

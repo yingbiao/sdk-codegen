@@ -1,5 +1,14 @@
 # Changelog
 
+### [22.4.2](https://www.github.com/looker-open-source/sdk-codegen/compare/hackathon-v22.4.2...hackathon-v22.4.2) (2022-04-25)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @looker/extension-utils bumped from ^0.1.9 to ^0.1.10
+
 ### [22.4.2](https://www.github.com/looker-open-source/sdk-codegen/compare/hackathon-v22.4.1...hackathon-v22.4.2) (2022-04-07)
 
 
