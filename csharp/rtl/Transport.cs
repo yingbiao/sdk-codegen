@@ -295,7 +295,7 @@ namespace Looker.RTL
                 case ResponseMode.Binary:
                     return new SdkResponse<TSuccess, TError> {Value = response.Body as TSuccess};
                 case ResponseMode.String:
-                    if (response.ContentType.StartsWith("application/json"))
+                    if (typeof(TSuccess) != typeof(string) && response.ContentType.StartsWith("application/json"))
                     {
                         return new SdkResponse<TSuccess, TError>
                         {
